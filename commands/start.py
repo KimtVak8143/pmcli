@@ -1,0 +1,39 @@
+import typer
+
+
+def start():
+    """Show the PMCLI welcome screen."""
+    typer.echo(
+        r"""
+01010000 01001101 01000011 01001100 01001001
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                                              ┃
+┃      ██████╗ ███╗   ███╗ ██████╗██╗     ██╗                 ┃
+┃      ██╔══██╗████╗ ████║██╔════╝██║     ██║                 ┃
+┃      ██████╔╝██╔████╔██║██║     ██║     ██║                 ┃
+┃      ██╔═══╝ ██║╚██╔╝██║██║     ██║     ██║                 ┃
+┃      ██║     ██║ ╚═╝ ██║╚██████╗███████╗██║                 ┃
+┃      ╚═╝     ╚═╝     ╚═╝ ╚═════╝╚══════╝╚═╝                 ┃
+┃                                                              ┃
+┃              ┌───────────────┐                               ┃
+┃              │   ┌───────┐   │   ENCRYPTED LOCAL VAULT       ┃
+┃              │   │  ***  │   │   ~/.pmcli/vault.json         ┃
+┃              │   │  ***  │   │                               ┃
+┃              │   └───────┘   │   passwords never print       ┃
+┃              └───────┬───────┘   reveal copies to clipboard  ┃
+┃                      │                                       ┃
+┃         101101 ──────┴────── 011010                          ┃
+┃                                                              ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+01000110 01000101 01010010 01001110 01000101 01010100
+
+  $ pmcli add <site>       store a new credential
+  $ pmcli list             scan stored sites
+  $ pmcli get <site>       reveal username only
+  $ pmcli reveal <site>    copy password to clipboard
+
+  status: armed
+  mode: local-only
+  output: secrets stay off-screen
+"""
+    )
