@@ -35,39 +35,81 @@ Important:
 - `PMCLI_ENCRYPTION_PHRASE` is used to encrypt and decrypt saved passwords.
 - Do not change `PMCLI_ENCRYPTION_PHRASE` after saving passwords, or old entries cannot be decrypted.
 
+## Run From Anywhere
+
+Create a small wrapper command:
+
+```bash
+mkdir -p ~/bin
+nano ~/bin/pmcli
+```
+
+Paste this into the file:
+
+```bash
+#!/bin/bash
+cd /Users/mohitkushwaha/Documents/ABCD/pmcli
+exec pmenv/bin/python main.py "$@"
+```
+
+Make it executable:
+
+```bash
+chmod +x ~/bin/pmcli
+```
+
+Add `~/bin` to your shell path:
+
+```bash
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Now you can run `pmcli` from anywhere:
+
+```bash
+pmcli --help
+```
+
 ## Commands
 
 Show help:
 
 ```bash
-pmenv/bin/python main.py --help
+pmcli --help
 ```
 
 Add a credential:
 
 ```bash
-pmenv/bin/python main.py add github.com
+pmcli add github.com
 ```
 
 List saved sites:
 
 ```bash
-pmenv/bin/python main.py list
+pmcli list
 ```
 
 Get the username for a site:
 
 ```bash
-pmenv/bin/python main.py get github.com
+pmcli get github.com
 ```
 
 Copy the password for a site to your clipboard:
 
 ```bash
-pmenv/bin/python main.py reveal github.com
+pmcli reveal github.com
 ```
 
 `reveal` asks for your master password. It does not print the saved password.
+
+Without the wrapper, run commands from the `pmcli` folder like this:
+
+```bash
+pmenv/bin/python main.py list
+```
 
 ## Fresh Start
 
