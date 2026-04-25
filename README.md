@@ -35,7 +35,7 @@ Important:
 - `PMCLI_ENCRYPTION_PHRASE` is used to encrypt and decrypt saved passwords.
 - Do not change `PMCLI_ENCRYPTION_PHRASE` after saving passwords, or old entries cannot be decrypted.
 
-## Run From Anywhere
+## Run From Anywhere On macOS/Linux
 
 Create a small wrapper command:
 
@@ -68,6 +68,46 @@ source ~/.zshrc
 Now you can run `pmcli` from anywhere:
 
 ```bash
+pmcli --help
+```
+
+## Run From Anywhere On Windows
+
+Create a folder for local commands:
+
+```powershell
+mkdir $HOME\bin
+```
+
+Create a file named:
+
+```text
+%USERPROFILE%\bin\pmcli.bat
+```
+
+Put this inside `pmcli.bat`:
+
+```bat
+@echo off
+cd /d C:\path\to\ABCD\pmcli
+pmenv\Scripts\python.exe main.py %*
+```
+
+Replace `C:\path\to\ABCD\pmcli` with the real path to your `pmcli` folder.
+
+Add `bin` to your user PATH in PowerShell:
+
+```powershell
+[Environment]::SetEnvironmentVariable(
+  "Path",
+  $env:Path + ";$HOME\bin",
+  "User"
+)
+```
+
+Restart your terminal, then test:
+
+```powershell
 pmcli --help
 ```
 
