@@ -48,7 +48,7 @@ Paste this into the file:
 
 ```bash
 #!/bin/bash
-cd /Users/mohitkushwaha/Documents/ABCD/pmcli
+cd /Users/<Name>/Documents/ABCD/pmcli
 exec pmenv/bin/python main.py "$@"
 ```
 
